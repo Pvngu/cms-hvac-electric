@@ -54,8 +54,8 @@
   --color-accent-foreground: var(--color-white);
 
   /* Backgrounds */
-  --color-background: var(--color-black-rich);
-  --color-surface: var(--color-black-rich);
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
   /* Keeping alias for compatibility if needed, or deprecate */
   --color-surface-highlight: var(--color-blue-ice);
   --color-surface-light: var(--color-gray-pale);
