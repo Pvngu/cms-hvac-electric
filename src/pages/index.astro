@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/sections/Hero.astro";
+import About from "@components/sections/About.astro";
 import FAQ from "@components/sections/FAQ.astro";
 import Projects from "@components/sections/Projects.astro";
 import CTA from "@components/sections/CTA.astro";
@@ -12,6 +13,7 @@ const t = useNestedTranslations(currentLocale);
 
 <Layout title={t("meta.home.title")} description={t("meta.home.description")}>
   <Hero />
+  <About />
   <Services />
   <Projects />
   <CTA />
