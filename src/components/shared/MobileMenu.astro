@@ -1,0 +1,109 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "@components/ui/Button.astro";
+import { SITE_DATA, NAV_LINKS } from "@data/site";
+
+// Mobile Menu Component
+---
+
+<div
+    id="mobile-menu"
+    class="fixed inset-0 z-[60] bg-white translate-x-full transition-transform duration-300 flex flex-col pointer-events-none data-[open=true]:translate-x-0 data-[open=true]:pointer-events-auto"
+>
+    <!-- Header with Close Button -->
+    <div
+        class="h-20 flex items-center justify-end px-4 border-b border-gray-100"
+    >
+        <button
+            id="close-menu-btn"
+            class="p-2 text-gray-600 hover:text-black transition-colors"
+            aria-label="Close menu"
+        >
+            <Icon name="x" class="size-6" />
+        </button>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 flex flex-col p-6 overflow-y-auto">
+        <!-- Navigation Links -->
+        <nav class="flex flex-col gap-6 mb-8">
+            {
+                NAV_LINKS.map((link) => (
+                    <a
+                        href={link.href}
+                        class="text-2xl font-medium text-gray-900 hover:text-blue-600 transition-colors"
+                    >
+                        {link.label}
+                    </a>
+                ))
+            }
+        </nav>
+
+        <!-- Contact Info Section -->
+        <div class="mt-auto space-y-6">
+            <div class="h-px w-full bg-gray-100"></div>
+
+            <div class="flex flex-col gap-4">
+                <h3
+                    class="text-sm uppercase tracking-wider text-gray-500 font-semibold"
+                >
+                    Get in Touch
+                </h3>
+
+                <a
+                    href={`tel:${SITE_DATA.tel}`}
+                    class="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition-colors"
+                >
+                    <div
+                        class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center"
+                    >
+                        <Icon name="phone-call" class="size-5" />
+                    </div>
+                    <span class="font-medium">{SITE_DATA.phone}</span>
+                </a>
+
+                <a
+                    href={`mailto:${SITE_DATA.email}`}
+                    class="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition-colors"
+                >
+                    <div
+                        class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center"
+                    >
+                        <Icon name="mail" class="size-5" />
+                    </div>
+                    <span class="font-medium">{SITE_DATA.email}</span>
+                </a>
+            </div>
+
+            <Button
+                href="/contact"
+                variant="primary"
+                class="w-full justify-center py-6 text-lg"
+            >
+                Contact Us
+            </Button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Script to handle menu toggle logic will be driven by the Header's button,
+    // but we can add self-closing logic here for links if needed.
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeBtn = document.getElementById("close-menu-btn");
+
+    const closeMenu = () => {
+        if (mobileMenu) {
+            mobileMenu.dataset.open = "false";
+            document.body.style.overflow = ""; // Restore scrolling
+        }
+    };
+
+    closeBtn?.addEventListener("click", closeMenu);
+
+    // Close when clicking a link
+    const links = mobileMenu?.querySelectorAll("a");
+    links?.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+    });
+</script>
