@@ -1,0 +1,140 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/ui/Container.astro";
+import Button from "@components/ui/Button.astro";
+import { PROJECTS } from "@data/projects";
+import { Icon } from "astro-icon/components";
+
+export function getStaticPaths() {
+    return PROJECTS.map((project) => ({
+        params: { slug: project.slug },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} - Projects`} description={project.description}>
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] md:h-[70vh] w-full bg-slate-900">
+        <div class="absolute inset-0">
+            <img
+                src={project.image}
+                alt={project.title}
+                class="size-full object-cover"
+            />
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+
+        <Container class="relative z-10 h-full flex flex-col justify-end pb-20">
+            <h1 class="text-white text-5xl md:text-7xl font-gilda mb-4">
+                {project.title}
+            </h1>
+            <div
+                class="flex items-center gap-2 text-white/80 text-lg md:text-xl"
+            >
+                <Icon name="map-pin" class="size-5" />
+                <span>{project.location}</span>
+            </div>
+        </Container>
+    </section>
+
+    <!-- Details Section -->
+    <section class="py-20 bg-white">
+        <Container>
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-24">
+                <!-- Sidebar / Stats -->
+                <div class="lg:col-span-4 space-y-12">
+                    <!-- Key Info -->
+                    <div class="space-y-6">
+                        <div class="border-b border-gray-200 pb-4">
+                            <p
+                                class="text-sm text-gray-500 uppercase tracking-wider mb-1"
+                            >
+                                Client
+                            </p>
+                            <p class="text-xl font-medium text-black">
+                                {project.client}
+                            </p>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <p
+                                class="text-sm text-gray-500 uppercase tracking-wider mb-1"
+                            >
+                                Year
+                            </p>
+                            <p class="text-xl font-medium text-black">
+                                {project.year}
+                            </p>
+                        </div>
+                        <div class="border-b border-gray-200 pb-4">
+                            <p
+                                class="text-sm text-gray-500 uppercase tracking-wider mb-1"
+                            >
+                                Services
+                            </p>
+                            <ul
+                                class="text-xl font-medium text-black space-y-1"
+                            >
+                                {project.services.map((s) => <li>{s}</li>)}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Project Stats Card -->
+                    <div
+                        class="bg-slate-50 p-6 rounded-xl border border-slate-100"
+                    >
+                        <h3 class="font-gilda text-2xl mb-4">Project Impact</h3>
+                        <div class="grid grid-cols-1 gap-4">
+                            {
+                                project.stats.map((stat) => (
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-500">
+                                            {stat.label}
+                                        </span>
+                                        <span class="font-semibold text-slate-900">
+                                            {stat.value}
+                                        </span>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="lg:col-span-8 flex flex-col justify-between h-full">
+                    <div>
+                        <h2
+                            class="text-3xl md:text-4xl font-gilda leading-tight mb-8 text-black"
+                        >
+                            Project Overview
+                        </h2>
+                        <p class="text-lg text-gray-600 leading-relaxed mb-12">
+                            {project.description}
+                        </p>
+
+                        <!-- Mock Gallery Grid -->
+                        <div class="grid grid-cols-2 gap-4 mb-12">
+                            <div class="bg-gray-100 aspect-video rounded-lg">
+                            </div>
+                            <div class="bg-gray-100 aspect-video rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="border-t border-gray-100 pt-8 flex justify-between items-center"
+                    >
+                        <Button href="/" variant="outline">
+                            Back to Home
+                        </Button>
+                        <Button href="/contact"> Start Your Project </Button>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    </section>
+</Layout>

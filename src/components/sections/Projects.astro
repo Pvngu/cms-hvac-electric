@@ -1,0 +1,58 @@
+---
+import Container from "@components/ui/Container.astro";
+import Button from "@components/ui/Button.astro";
+import { PROJECTS } from "@data/projects";
+---
+
+<section class="py-24 bg-gray-50/50">
+  <Container>
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-12">
+      <h2 class="text-black text-4xl md:text-5xl font-gilda leading-tight">
+        Recent Projects
+      </h2>
+      
+      <Button
+        href="/projects"
+        class="bg-[#E8C557] hover:bg-[#d4b245] text-black font-semibold rounded-full px-8 py-3 text-xs tracking-wider uppercase shadow-lg shadow-yellow-500/10 border-none transition-transform hover:-translate-y-0.5"
+      >
+        More Projects
+      </Button>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        PROJECTS.map((project) => (
+          <a href={`/projects/${project.slug}`} class="group relative aspect-[4/5] overflow-hidden rounded-xl bg-gray-900 cursor-pointer block">
+            <!-- Image -->
+            <img
+              src={project.image}
+              alt={project.title}
+              class="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+            <!-- Content -->
+            <div class="absolute bottom-0 left-0 w-full p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-white text-2xl md:text-3xl font-gilda mb-4 leading-tight">
+                {project.title}
+              </h3>
+              
+              <div class="space-y-1">
+                <p class="text-white/80 text-sm font-medium">
+                  Client: {project.client}
+                </p>
+                <p class="text-white/80 text-sm font-medium">
+                  Year: {project.year}
+                </p>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Container>
+</section>
