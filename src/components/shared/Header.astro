@@ -10,13 +10,19 @@ import { NAV_LINKS, SITE_DATA } from "@data/site";
 
 <header
   id="main-header"
-  class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent"
+  class="fixed top-0 w-full z-[70] transition-all duration-300 border-b border-transparent data-[menu-open=true]:border-transparent"
+  data-menu-open="false"
 >
   <Container class="flex items-center h-20">
     <!-- Logo -->
     <div class="flex-1 flex justify-start">
       <a href="/" class="flex items-center gap-2 group">
-        <Image src={logo} alt="Logo" class="w-20 h-20 fill-white text-white" />
+        <Image
+          src={logo}
+          alt="Logo"
+          class="w-20 h-20 fill-white text-white transition-all duration-300"
+          id="header-logo"
+        />
       </a>
     </div>
 
@@ -42,28 +48,44 @@ import { NAV_LINKS, SITE_DATA } from "@data/site";
       </a>
 
       <div class="hidden sm:block">
-        <Button
-          variant="primary"
-          size="sm"
-          class="bg-black hover:bg-black/80 text-white border border-white/10 rounded-lg px-6 font-medium"
-        >
-          Sign Up
-        </Button>
+        <Button variant="primary">Contact Us</Button>
       </div>
 
       <!-- Hamburger Menu Button -->
       <button
         id="hamburger-btn"
-        class="md:hidden p-2 text-white hover:text-white/80 transition-colors cursor-pointer"
-        aria-label="Open menu"
+        class="md:hidden p-2 text-white hover:text-white/80 transition-colors cursor-pointer relative z-50"
+        aria-label="Toggle menu"
       >
-        <Icon name="menu" class="size-6" />
+        <Icon
+          name="menu"
+          class="size-6 transition-opacity duration-300"
+          id="icon-menu"
+        />
+        <Icon
+          name="x"
+          class="size-6 absolute inset-0 m-auto opacity-0 transition-opacity duration-300 text-black"
+          id="icon-close"
+        />
       </button>
     </div>
   </Container>
 </header>
 
 <MobileMenu />
+
+<style>
+  /* Styling based on data-menu-open */
+  header[data-menu-open="true"] #header-logo {
+    filter: brightness(0);
+  }
+  header[data-menu-open="true"] #hamburger-btn #icon-menu {
+    opacity: 0;
+  }
+  header[data-menu-open="true"] #hamburger-btn #icon-close {
+    opacity: 1;
+  }
+</style>
 
 <script>
   const header = document.getElementById("main-header");
@@ -91,15 +113,34 @@ import { NAV_LINKS, SITE_DATA } from "@data/site";
     }
   };
 
-  const openList = () => {
-    if (mobileMenu) {
-      mobileMenu.dataset.open = "true";
-      document.body.style.overflow = "hidden"; // Prevent scrolling when menu is open
+  // Toggle Menu
+  const toggleMenu = () => {
+    if (!mobileMenu || !header) return;
+
+    const isOpen = mobileMenu.dataset.open === "true";
+    const newState = !isOpen;
+
+    mobileMenu.dataset.open = String(newState);
+    header.setAttribute("data-menu-open", String(newState));
+
+    if (newState) {
+      document.body.style.overflow = "hidden";
+      // Remove scroll styles when opening
+      header.classList.remove(
+        "bg-slate-900/90",
+        "backdrop-blur-md",
+        "border-white/5",
+        "shadow-lg",
+      );
+    } else {
+      document.body.style.overflow = "";
+      // Re-apply scroll check
+      updateHeader();
     }
   };
 
   window.addEventListener("scroll", updateHeader);
-  hamburgerBtn?.addEventListener("click", openList);
+  hamburgerBtn?.addEventListener("click", toggleMenu);
 
   // Initial check in case of reload
   updateHeader();

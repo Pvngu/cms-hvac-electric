@@ -8,21 +8,8 @@ import { SITE_DATA, NAV_LINKS } from "@data/site";
     id="mobile-menu"
     class="fixed inset-0 z-[60] bg-white translate-x-full transition-transform duration-300 flex flex-col pointer-events-none data-[open=true]:translate-x-0 data-[open=true]:pointer-events-auto"
 >
-    <!-- Header with Close Button -->
-    <div
-        class="h-20 flex items-center justify-end px-4 border-b border-gray-100 cursor-pointer"
-    >
-        <button
-            id="close-menu-btn"
-            class="p-2 text-gray-600 hover:text-black transition-colors"
-            aria-label="Close menu"
-        >
-            <Icon name="x" class="size-6" />
-        </button>
-    </div>
-
     <!-- Content -->
-    <div class="flex-1 flex flex-col p-6 overflow-y-auto">
+    <div class="flex-1 flex flex-col p-6 pt-24 overflow-y-auto">
         <!-- Navigation Links -->
         <nav class="flex flex-col gap-6 mb-8">
             {
