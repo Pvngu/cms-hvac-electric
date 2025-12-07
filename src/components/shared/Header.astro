@@ -24,12 +24,9 @@ import { NAV_LINKS, SITE_DATA } from "@data/site";
     <nav class="hidden md:flex items-center gap-8">
       {
         NAV_LINKS.map((link) => (
-          <a
-            href={link.href}
-            class="text-white/80 hover:text-white text-sm font-medium transition-colors font-inter"
-          >
+          <Button href={link.href} variant="nav">
             {link.label}
-          </a>
+          </Button>
         ))
       }
     </nav>
