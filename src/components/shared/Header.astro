@@ -142,6 +142,12 @@ import { NAV_LINKS, SITE_DATA } from "@data/site";
   window.addEventListener("scroll", updateHeader);
   hamburgerBtn?.addEventListener("click", toggleMenu);
 
+  document.addEventListener("close-menu", () => {
+    if (mobileMenu?.dataset.open === "true") {
+      toggleMenu();
+    }
+  });
+
   // Initial check in case of reload
   updateHeader();
 </script>

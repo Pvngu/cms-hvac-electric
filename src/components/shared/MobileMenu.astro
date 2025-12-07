@@ -78,10 +78,7 @@ import { SITE_DATA, NAV_LINKS } from "@data/site";
     const closeBtn = document.getElementById("close-menu-btn");
 
     const closeMenu = () => {
-        if (mobileMenu) {
-            mobileMenu.dataset.open = "false";
-            document.body.style.overflow = ""; // Restore scrolling
-        }
+        document.dispatchEvent(new CustomEvent("close-menu"));
     };
 
     closeBtn?.addEventListener("click", closeMenu);
@@ -90,5 +87,14 @@ import { SITE_DATA, NAV_LINKS } from "@data/site";
     const links = mobileMenu?.querySelectorAll("a");
     links?.forEach((link) => {
         link.addEventListener("click", closeMenu);
+    });
+
+    // Close on resize/orientation change
+    let lastWidth = window.innerWidth;
+    window.addEventListener("resize", () => {
+        if (window.innerWidth !== lastWidth) {
+            lastWidth = window.innerWidth;
+            closeMenu();
+        }
     });
 </script>
