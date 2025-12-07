@@ -1,0 +1,89 @@
+---
+import { Icon } from "astro-icon/components";
+import Container from "@components/ui/Container.astro";
+import Button from "@components/ui/Button.astro";
+import Image from "astro/components/Image.astro";
+import logo from "@assets/logo.svg";
+
+const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Properties", href: "/properties" },
+  { label: "Product", href: "/product" },
+  { label: "Contact", href: "/contact" },
+  { label: "About Us", href: "/about" },
+];
+---
+
+<header
+  id="main-header"
+  class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent"
+>
+  <Container class="flex items-center justify-between h-20">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 group">
+      <Image src={logo} alt="Logo" class="w-20 h-20 fill-white" />
+    </a>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex items-center gap-8">
+      {
+        NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            class="text-white/80 hover:text-white text-sm font-medium transition-colors font-inter"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-6">
+      <a
+        href="tel:+99874234654"
+        class="hidden lg:flex items-center gap-2 text-white/90 hover:text-white transition-colors text-sm font-medium"
+      >
+        <Icon name="phone-call" class="size-4" />
+        <span>+99 (874) 234 -654</span>
+      </a>
+
+      <Button
+        variant="primary"
+        size="sm"
+        class="bg-black hover:bg-black/80 text-white border border-white/10 rounded-lg px-6 font-medium"
+      >
+        Sign Up
+      </Button>
+    </div>
+  </Container>
+</header>
+
+<script>
+  const header = document.getElementById("main-header");
+
+  const updateHeader = () => {
+    if (!header) return;
+    if (window.scrollY > 20) {
+      header.classList.add(
+        "bg-slate-900/90",
+        "backdrop-blur-md",
+        "border-white/5",
+        "shadow-lg"
+      );
+      header.classList.remove("border-transparent");
+    } else {
+      header.classList.remove(
+        "bg-slate-900/90",
+        "backdrop-blur-md",
+        "border-white/5",
+        "shadow-lg"
+      );
+      header.classList.add("border-transparent");
+    }
+  };
+
+  window.addEventListener("scroll", updateHeader);
+  // Initial check in case of reload
+  updateHeader();
+</script>
