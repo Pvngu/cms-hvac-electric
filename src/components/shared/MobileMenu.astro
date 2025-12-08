@@ -16,7 +16,7 @@ import { SITE_DATA, NAV_LINKS } from "@data/site";
         NAV_LINKS.map((link) => (
           <a
             href={link.href}
-            class="text-4xl font-medium font-oswald text-gray-900 hover:text-blue-600 transition-colors"
+            class="text-4xl font-medium font-oswald text-gray-900 hover:text-blue-600 transition-colors menu-animate-item"
           >
             {link.label}
           </a>
@@ -25,7 +25,7 @@ import { SITE_DATA, NAV_LINKS } from "@data/site";
     </nav>
 
     <!-- Contact Info Section -->
-    <div class="mt-auto space-y-6">
+    <div class="mt-auto space-y-6 menu-animate-item">
       <div class="h-px w-full bg-gray-100"></div>
 
       <div class="flex flex-col gap-4">
@@ -72,8 +72,6 @@ import { SITE_DATA, NAV_LINKS } from "@data/site";
 </div>
 
 <script>
-  // Script to handle menu toggle logic will be driven by the Header's button,
-  // but we can add self-closing logic here for links if needed.
   const mobileMenu = document.getElementById("mobile-menu");
   const closeBtn = document.getElementById("close-menu-btn");
 

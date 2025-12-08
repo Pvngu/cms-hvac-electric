@@ -8,6 +8,7 @@ export interface Project {
     client: string;
     year: string;
     location: string;
+    category: string;
     services: string[];
     image: ImageMetadata;
     description: string;
@@ -24,6 +25,7 @@ export const PROJECTS: Project[] = [
         client: "SoCal Development Group",
         year: "2023",
         location: "San Diego, CA",
+        category: "HVAC Installation",
         services: ["HVAC Installation", "Electrical Grid", "Smart Building Control"],
         image:
             ProjectImage1,
@@ -41,6 +43,7 @@ export const PROJECTS: Project[] = [
         client: "West Coast Retail",
         year: "2024",
         location: "Los Angeles, CA",
+        category: "Air Conditioning",
         services: ["Air Conditioning", "Lighting Design", "Emergency Power"],
         image:
             ProjectImage2,
@@ -58,6 +61,7 @@ export const PROJECTS: Project[] = [
         client: "TechWay Corp.",
         year: "2022",
         location: "San Diego, CA",
+        category: "Industrial Ventilation",
         services: ["Industrial Ventilation", "Heavy Power", "Process Cooling"],
         image:
             ProjectImage3,
