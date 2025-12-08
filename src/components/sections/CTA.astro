@@ -1,211 +1,201 @@
 ---
 import Container from "@components/ui/Container.astro";
+import Image from "astro/components/Image.astro";
 import Button from "@components/ui/Button.astro";
 import { Icon } from "astro-icon/components";
 import { SITE_DATA } from "@data/site";
 
+import backgroundImage from "@assets/general/men-working-with-equipment-full-shot.webp";
+
 const SERVICES = [
-    "HVAC Installation",
-    "AC Repair",
-    "Electrical Grid",
-    "Smart Home Setup",
-    "Maintenance",
+  "HVAC Installation",
+  "AC Repair",
+  "Electrical Grid",
+  "Smart Home Setup",
+  "Maintenance",
 ];
 ---
 
 <section class="relative py-24 lg:py-32 overflow-hidden">
-    <!-- Background Image with Overlay -->
-    <div class="absolute inset-0 z-0">
-        <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop"
-            alt="Modern Home"
-            class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/60"></div>
-    </div>
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={backgroundImage}
+      alt="Modern Home"
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/60"></div>
+  </div>
 
-    <Container class="relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <!-- Left Column: Content -->
-            <div class="text-white space-y-8">
-                <div>
-                    <h2 class="text-white">
-                        Let's Find Your <br /> Perfect Climate Solution
-                    </h2>
-                    <p
-                        class="text-lg text-white/80 max-w-md font-inter leading-relaxed"
-                    >
-                        Discover modern HVAC and electrical systems customized
-                        for your space. Efficient, reliable, and tailored to
-                        your needs.
-                    </p>
-                </div>
-
-                <div
-                    class="pt-8 flex flex-col sm:flex-row gap-8 sm:gap-12 border-t border-white/10"
-                >
-                    <div>
-                        <p
-                            class="text-sm text-white/60 mb-1 uppercase tracking-wider"
-                        >
-                            Email Address
-                        </p>
-                        <a
-                            href={`mailto:${SITE_DATA.email}`}
-                            class="text-lg hover:text-blue-300 transition-colors"
-                        >
-                            {SITE_DATA.email}
-                        </a>
-                    </div>
-                    <div>
-                        <p
-                            class="text-sm text-white/60 mb-1 uppercase tracking-wider"
-                        >
-                            Phone
-                        </p>
-                        <a
-                            href={`tel:${SITE_DATA.tel}`}
-                            class="text-lg hover:text-blue-300 transition-colors"
-                        >
-                            {SITE_DATA.phone}
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column: Form Card -->
-            <div
-                class="bg-[#FFFBF2] text-slate-900 rounded-3xl p-8 md:p-10 shadow-2xl"
-            >
-                <form class="space-y-8">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <!-- Name -->
-                        <div class="space-y-2 group">
-                            <label
-                                for="name"
-                                class="block text-sm font-semibold text-slate-900"
-                            >
-                                Your name
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="John Doe"
-                                class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 placeholder:text-slate-400 focus:outline-none focus:border-slate-900 transition-colors"
-                                required
-                            />
-                        </div>
-
-                        <!-- Service -->
-                        <div class="space-y-2 group">
-                            <label
-                                for="service"
-                                class="block text-sm font-semibold text-slate-900"
-                            >
-                                What do you need?
-                            </label>
-                            <div class="relative">
-                                <select
-                                    id="service"
-                                    name="service"
-                                    class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 focus:outline-none focus:border-slate-900 transition-colors appearance-none cursor-pointer"
-                                >
-                                    <option value="" disabled selected
-                                        >Select a service</option
-                                    >
-                                    {
-                                        SERVICES.map((service) => (
-                                            <option value={service}>
-                                                {service}
-                                            </option>
-                                        ))
-                                    }
-                                </select>
-                                <Icon
-                                    name="chevron-down"
-                                    class="absolute right-0 top-1/2 -translate-y-1/2 size-4 text-slate-400 pointer-events-none"
-                                />
-                            </div>
-                        </div>
-
-                        <!-- Location -->
-                        <div class="space-y-2 group">
-                            <label
-                                for="location"
-                                class="block text-sm font-semibold text-slate-900"
-                            >
-                                Your location
-                            </label>
-                            <input
-                                type="text"
-                                id="location"
-                                name="location"
-                                placeholder="San Diego, CA"
-                                class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 placeholder:text-slate-400 focus:outline-none focus:border-slate-900 transition-colors"
-                            />
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="space-y-2 group">
-                            <label
-                                for="phone"
-                                class="block text-sm font-semibold text-slate-900"
-                            >
-                                Your phone number
-                            </label>
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="(555) 000-0000"
-                                class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 placeholder:text-slate-400 focus:outline-none focus:border-slate-900 transition-colors"
-                            />
-                        </div>
-
-                        <!-- Email (Full Width) -->
-                        <div class="md:col-span-2 space-y-2 group">
-                            <label
-                                for="email"
-                                class="block text-sm font-semibold text-slate-900"
-                            >
-                                Your email address
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="youremail@gmail.com"
-                                class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 placeholder:text-slate-400 focus:outline-none focus:border-slate-900 transition-colors"
-                                required
-                            />
-                        </div>
-                    </div>
-
-                    <!-- Message (Full Width) -->
-                    <div class="md:col-span-2 space-y-2 group">
-                        <label
-                            for="message"
-                            class="block text-sm font-semibold text-slate-900"
-                        >
-                            Your message
-                        </label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="4"
-                            placeholder="Tell us about your project..."
-                            class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 placeholder:text-slate-400 focus:outline-none focus:border-slate-900 transition-colors resize-none"
-                        ></textarea>
-                    </div>
-                </form>
-
-                <div class="pt-4">
-                    <Button type="submit" class="w-full">
-                        Book a Consultation
-                    </Button>
-                </div>
-            </div>
+  <Container class="relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Left Column: Content -->
+      <div class="text-white space-y-8">
+        <div>
+          <h2 class="text-white">
+            Let's Find Your <br /> Perfect Climate Solution
+          </h2>
+          <p class="text-lg text-white/80 max-w-md font-inter leading-relaxed">
+            Discover modern HVAC and electrical systems customized for your
+            space. Efficient, reliable, and tailored to your needs.
+          </p>
         </div>
-    </Container>
+
+        <div
+          class="pt-8 flex flex-col sm:flex-row gap-8 sm:gap-12 border-t border-white/10"
+        >
+          <div>
+            <p class="text-sm text-white/60 mb-1 uppercase tracking-wider">
+              Email Address
+            </p>
+            <a
+              href={`mailto:${SITE_DATA.email}`}
+              class="text-lg hover:text-blue-300 transition-colors"
+            >
+              {SITE_DATA.email}
+            </a>
+          </div>
+          <div>
+            <p class="text-sm text-white/60 mb-1 uppercase tracking-wider">
+              Phone
+            </p>
+            <a
+              href={`tel:${SITE_DATA.tel}`}
+              class="text-lg hover:text-blue-300 transition-colors"
+            >
+              {SITE_DATA.phone}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Form Card -->
+      <div
+        class="bg-[#FFFBF2] text-slate-900 rounded-3xl p-8 md:p-10 shadow-2xl"
+      >
+        <form class="space-y-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Name -->
+            <div class="space-y-2 group">
+              <label
+                for="name"
+                class="block text-sm font-semibold text-slate-900"
+              >
+                Your name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="John Doe"
+                class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 placeholder:text-slate-400 focus:outline-none focus:border-slate-900 transition-colors"
+                required
+              />
+            </div>
+
+            <!-- Service -->
+            <div class="space-y-2 group">
+              <label
+                for="service"
+                class="block text-sm font-semibold text-slate-900"
+              >
+                What do you need?
+              </label>
+              <div class="relative">
+                <select
+                  id="service"
+                  name="service"
+                  class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 focus:outline-none focus:border-slate-900 transition-colors appearance-none cursor-pointer"
+                >
+                  <option value="" disabled selected>Select a service</option>
+                  {
+                    SERVICES.map((service) => (
+                      <option value={service}>{service}</option>
+                    ))
+                  }
+                </select>
+                <Icon
+                  name="chevron-down"
+                  class="absolute right-0 top-1/2 -translate-y-1/2 size-4 text-slate-400 pointer-events-none"
+                />
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="space-y-2 group">
+              <label
+                for="location"
+                class="block text-sm font-semibold text-slate-900"
+              >
+                Your location
+              </label>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="San Diego, CA"
+                class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 placeholder:text-slate-400 focus:outline-none focus:border-slate-900 transition-colors"
+              />
+            </div>
+
+            <!-- Phone -->
+            <div class="space-y-2 group">
+              <label
+                for="phone"
+                class="block text-sm font-semibold text-slate-900"
+              >
+                Your phone number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="(555) 000-0000"
+                class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 placeholder:text-slate-400 focus:outline-none focus:border-slate-900 transition-colors"
+              />
+            </div>
+
+            <!-- Email (Full Width) -->
+            <div class="md:col-span-2 space-y-2 group">
+              <label
+                for="email"
+                class="block text-sm font-semibold text-slate-900"
+              >
+                Your email address
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="youremail@gmail.com"
+                class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 placeholder:text-slate-400 focus:outline-none focus:border-slate-900 transition-colors"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Message (Full Width) -->
+          <div class="md:col-span-2 space-y-2 group">
+            <label
+              for="message"
+              class="block text-sm font-semibold text-slate-900"
+            >
+              Your message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Tell us about your project..."
+              class="w-full bg-transparent border-b border-slate-300 py-2 text-slate-600 placeholder:text-slate-400 focus:outline-none focus:border-slate-900 transition-colors resize-none"
+            ></textarea>
+          </div>
+        </form>
+
+        <div class="pt-4">
+          <Button type="submit" class="w-full"> Book a Consultation </Button>
+        </div>
+      </div>
+    </div>
+  </Container>
 </section>
