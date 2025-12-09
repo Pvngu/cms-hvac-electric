@@ -101,4 +101,8 @@
   p {
     @apply text-lg text-gray-500 leading-relaxed;
   }
+
+  [data-animate="fade-up"] {
+    opacity: 0;
+  }
 }

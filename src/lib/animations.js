@@ -41,13 +41,20 @@ function initFadeUpAnimations() {
   if (isSmallDevice) {
     // On small devices, animate each element independently
     elements.forEach((el) => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: EASE,
-        scrollTrigger: { ...SCROLL_CONFIG, trigger: el },
-      });
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: EASE,
+          scrollTrigger: { ...SCROLL_CONFIG, trigger: el },
+        }
+      );
     });
   } else {
     // On larger devices, group by parent and use stagger
@@ -64,23 +71,37 @@ function initFadeUpAnimations() {
     grouped.forEach((group, parent) => {
       if (group.length > 1) {
         // Multiple elements in same container - use stagger
-        gsap.from(group, {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          ease: EASE,
-          stagger: 0.15,
-          scrollTrigger: { ...SCROLL_CONFIG, trigger: parent },
-        });
+        gsap.fromTo(
+          group,
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: EASE,
+            stagger: 0.15,
+            scrollTrigger: { ...SCROLL_CONFIG, trigger: parent },
+          }
+        );
       } else {
         // Single element - animate independently
-        gsap.from(group[0], {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          ease: EASE,
-          scrollTrigger: { ...SCROLL_CONFIG, trigger: group[0] },
-        });
+        gsap.fromTo(
+          group[0],
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: EASE,
+            scrollTrigger: { ...SCROLL_CONFIG, trigger: group[0] },
+          }
+        );
       }
     });
   }

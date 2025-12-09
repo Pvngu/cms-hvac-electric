@@ -7,98 +7,101 @@ import heatingImage from "@assets/services/heating-service.webp";
 import electricalImage from "@assets/services/electrical-service.webp";
 
 const services = [
-    {
-        title: "AC Installation & Repair",
-        description:
-            "Keep your living space cool and comfortable with professional AC installation and reliable repair services tailored to your needs.",
-        image: acImage,
-        href: "/contact",
-    },
-    {
-        title: "Heating Maintenance",
-        description:
-            "Ensure your home stays warm and efficient during the colder months with our expert heating maintenance and boiler services.",
-        image: heatingImage,
-        href: "/contact",
-    },
-    {
-        title: "Electrical Services",
-        description:
-            "From panel upgrades to safety inspections, our licensed electricians provide safe and high-quality electrical solutions for your property.",
-        image: electricalImage,
-        href: "/contact",
-    },
+  {
+    title: "AC Installation & Repair",
+    description:
+      "Keep your living space cool and comfortable with professional AC installation and reliable repair services tailored to your needs.",
+    image: acImage,
+    href: "/contact",
+  },
+  {
+    title: "Heating Maintenance",
+    description:
+      "Ensure your home stays warm and efficient during the colder months with our expert heating maintenance and boiler services.",
+    image: heatingImage,
+    href: "/contact",
+  },
+  {
+    title: "Electrical Services",
+    description:
+      "From panel upgrades to safety inspections, our licensed electricians provide safe and high-quality electrical solutions for your property.",
+    image: electricalImage,
+    href: "/contact",
+  },
 ];
 ---
 
 <section class="py-24 bg-white">
+  <Container>
     <Container>
-        <div class="mb-16 max-w-2xl">
+      <div class="mb-16 max-w-2xl" data-animate="fade-up">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 bg-white mb-6"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-gray-500"
+          >
+            <path
+              d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+            ></path>
+          </svg>
+          <span class="text-sm font-medium text-gray-600">Service</span>
+        </div>
+
+        <h2>Complete HVAC and Electric Solutions You Can Trust</h2>
+
+        <p>
+          We provide a full range of heating, cooling, and electrical solutions
+          for every space — whether it's your cozy home or a busy office. Our
+          goal is to deliver efficient results with care, reliability, and
+          consistency.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {
+          services.map((service) => (
             <div
-                class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 bg-white mb-6"
+              class="group relative h-[500px] w-full overflow-hidden rounded-2xl bg-gray-100"
+              data-animate="fade-up"
             >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="text-gray-500"
-                >
-                    <path
-                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
-                    ></path>
-                </svg>
-                <span class="text-sm font-medium text-gray-600">Service</span>
+              <Image
+                src={service.image}
+                alt={service.title}
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                width={600}
+                height={800}
+              />
+              <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+
+              <div class="absolute bottom-0 left-0 p-8 w-full flex flex-col gap-4">
+                <h3 class="text-2xl font-gilda text-white">{service.title}</h3>
+                <p class="text-gray-200 text-sm leading-relaxed mb-2 line-clamp-3">
+                  {service.description}
+                </p>
+                <div>
+                  <Button
+                    href={service.href}
+                    variant="primary"
+                    class="bg-blue-600 hover:bg-blue-700 text-white border-none"
+                  >
+                    Book Now
+                  </Button>
+                </div>
+              </div>
             </div>
-
-            <h2>Complete HVAC and Electric Solutions You Can Trust</h2>
-
-            <p>
-                We provide a full range of heating, cooling, and electrical
-                solutions for every space — whether it's your cozy home or a
-                busy office. Our goal is to deliver efficient results with care,
-                reliability, and consistency.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {
-                services.map((service) => (
-                    <div class="group relative h-[500px] w-full overflow-hidden rounded-2xl bg-gray-100">
-                        <Image
-                            src={service.image}
-                            alt={service.title}
-                            class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            width={600}
-                            height={800}
-                        />
-                        <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-
-                        <div class="absolute bottom-0 left-0 p-8 w-full flex flex-col gap-4">
-                            <h3 class="text-2xl font-gilda text-white">
-                                {service.title}
-                            </h3>
-                            <p class="text-gray-200 text-sm leading-relaxed mb-2 line-clamp-3">
-                                {service.description}
-                            </p>
-                            <div>
-                                <Button
-                                    href={service.href}
-                                    variant="primary"
-                                    class="bg-blue-600 hover:bg-blue-700 text-white border-none"
-                                >
-                                    Book Now
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
+          ))
+        }
+      </div>
     </Container>
+  </Container>
 </section>
