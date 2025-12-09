@@ -9,9 +9,9 @@ const buttonStyles = cva(
     variants: {
       variant: {
         primary:
-          "bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 text-base shadow-lg shadow-blue-600/20",
+          "bg-primary hover:bg-accent text-primary-foreground rounded-full px-8 text-base shadow-lg shadow-primary/20",
         link: "text-white hover:text-blue-200 underline underline-offset-4 font-medium transition-colors text-base",
-        nav: "text-text-main text-sm hover:text-primary no-underline hover:bg-surface-highlight/20 rounded-sm",
+        nav: "text-white/90 text-sm hover:text-white no-underline hover:bg-white/10 rounded-sm transition-all duration-300",
         outline:
           "border border-border/60 bg-transparent hover:bg-border/5 text-black rounded-sm",
       },
@@ -25,7 +25,7 @@ const buttonStyles = cva(
       variant: "primary",
       size: "md",
     },
-  },
+  }
 );
 
 export interface Props extends VariantProps<typeof buttonStyles> {
