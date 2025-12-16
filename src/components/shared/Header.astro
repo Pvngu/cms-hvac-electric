@@ -27,7 +27,7 @@ import { NAV_LINKS, SITE_DATA } from "@data/site";
     </div>
 
     <!-- Navigation -->
-    <nav class="hidden md:flex items-center gap-8">
+    <nav class="hidden lg:flex items-center gap-8">
       {
         NAV_LINKS.map((link) => (
           <Button href={link.href} variant="nav">
@@ -47,14 +47,24 @@ import { NAV_LINKS, SITE_DATA } from "@data/site";
         <span>{SITE_DATA.phone}</span>
       </a>
 
-      <div class="hidden sm:block">
+      <!-- Mobile Phone Link -->
+      <a
+        href={`tel:${SITE_DATA.tel}`}
+        class="lg:hidden text-white hover:text-white/80 transition-colors flex items-center"
+        aria-label="Call Business"
+        id="mobile-phone-link"
+      >
+        <Icon name="phone-call" class="size-5" />
+      </a>
+
+      <div class="hidden lg:block">
         <Button variant="primary">Contact Us</Button>
       </div>
 
       <!-- Hamburger Menu Button -->
       <button
         id="hamburger-btn"
-        class="md:hidden p-2 text-white hover:text-white/80 transition-colors cursor-pointer relative z-50"
+        class="lg:hidden p-2 text-white hover:text-white/80 transition-colors cursor-pointer relative z-50"
         aria-label="Toggle menu"
       >
         <Icon
@@ -76,7 +86,8 @@ import { NAV_LINKS, SITE_DATA } from "@data/site";
 
 <style>
   /* Styling based on data-menu-open */
-  header[data-menu-open="true"] #header-logo {
+  header[data-menu-open="true"] #header-logo,
+  header[data-menu-open="true"] #mobile-phone-link {
     filter: brightness(0);
   }
   header[data-menu-open="true"] #hamburger-btn #icon-menu {
