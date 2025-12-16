@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', initAnimations);
 
 function initAnimations() {
   initFadeUpAnimations();
+  initMobileMenuAnimation();
 
   // Handle hash navigation after animations have likely caused layout shifts
   if (window.location.hash) {
@@ -40,13 +41,20 @@ function initFadeUpAnimations() {
   if (isSmallDevice) {
     // On small devices, animate each element independently
     elements.forEach((el) => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: EASE,
-        scrollTrigger: { ...SCROLL_CONFIG, trigger: el },
-      });
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: EASE,
+          scrollTrigger: { ...SCROLL_CONFIG, trigger: el },
+        }
+      );
     });
   } else {
     // On larger devices, group by parent and use stagger
@@ -63,24 +71,85 @@ function initFadeUpAnimations() {
     grouped.forEach((group, parent) => {
       if (group.length > 1) {
         // Multiple elements in same container - use stagger
-        gsap.from(group, {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          ease: EASE,
-          stagger: 0.15,
-          scrollTrigger: { ...SCROLL_CONFIG, trigger: parent },
-        });
+        gsap.fromTo(
+          group,
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: EASE,
+            stagger: 0.15,
+            scrollTrigger: { ...SCROLL_CONFIG, trigger: parent },
+          }
+        );
       } else {
         // Single element - animate independently
-        gsap.from(group[0], {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          ease: EASE,
-          scrollTrigger: { ...SCROLL_CONFIG, trigger: group[0] },
-        });
+        gsap.fromTo(
+          group[0],
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: EASE,
+            scrollTrigger: { ...SCROLL_CONFIG, trigger: group[0] },
+          }
+        );
       }
     });
   }
+}
+
+// Mobile menu animation
+function initMobileMenuAnimation() {
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuItems = document.querySelectorAll(".menu-animate-item");
+
+  if (!mobileMenu || !menuItems.length) return;
+
+  // Initial set
+  gsap.set(menuItems, {
+    y: 20,
+    opacity: 0,
+  });
+
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "data-open"
+      ) {
+        const isOpen = mobileMenu.dataset.open === "true";
+
+        if (isOpen) {
+          gsap.to(menuItems, {
+            y: 0,
+            opacity: 1,
+            duration: 0.3,
+            stagger: 0.05,
+            ease: "power2.out",
+            delay: 0.1,
+          });
+        } else {
+          // Reset instantly when closing
+          gsap.set(menuItems, {
+            y: 20,
+            opacity: 0,
+          });
+        }
+      }
+    });
+  });
+
+  observer.observe(mobileMenu, {
+    attributes: true,
+    attributeFilter: ["data-open"],
+  });
 }

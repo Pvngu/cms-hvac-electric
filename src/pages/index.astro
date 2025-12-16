@@ -6,6 +6,7 @@ import FAQ from "@components/sections/FAQ.astro";
 import Projects from "@components/sections/Projects.astro";
 import CTA from "@components/sections/CTA.astro";
 import Services from "@components/sections/Services.astro";
+import WhyChooseUs from "@components/sections/WhyChooseUs.astro";
 import { useNestedTranslations } from "@lib/i18n";
 const { currentLocale } = Astro;
 const t = useNestedTranslations(currentLocale);
@@ -15,6 +16,7 @@ const t = useNestedTranslations(currentLocale);
   <Hero />
   <About />
   <Services />
+  <WhyChooseUs />
   <Projects />
   <CTA />
   <FAQ />

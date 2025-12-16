@@ -78,13 +78,12 @@ const STATS = [
         <!-- Content Column -->
         <div class="lg:col-span-7 flex flex-col justify-center space-y-8">
           <div class="space-y-4 max-w-2xl">
-            <h1
-              class="text-white text-4xl md:text-6xl lg:text-7xl leading-[1.1] font-gilda"
-            >
+            <h1 class="text-white" data-animate="fade-up">
               Trusted HVAC & Electrical Solutions in San Diego
             </h1>
             <p
               class="text-gray-200 text-lg md:text-xl max-w-2xl font-inter leading-relaxed"
+              data-animate="fade-up"
             >
               We deliver professional heating, cooling, and electrical services
               across San Diego — ensuring comfort, safety, and efficiency for
@@ -92,7 +91,10 @@ const STATS = [
             </p>
           </div>
 
-          <div class="flex flex-wrap items-center gap-2 md:gap-6">
+          <div
+            class="flex flex-wrap items-center gap-2 md:gap-6"
+            data-animate="fade-up"
+          >
             <Button variant="primary" size="lg"> Book Now </Button>
             <Button variant="link" href="/services"> See Our Services </Button>
           </div>
@@ -155,7 +157,7 @@ const STATS = [
 
     // Schedule next
     const duration = parseInt(
-      currentSlide.getAttribute("data-duration") || "5000",
+      currentSlide.getAttribute("data-duration") || "5000"
     );
 
     // Clear previous timeout if exists

@@ -1,0 +1,118 @@
+---
+import Container from "@components/ui/Container.astro";
+
+const features = [
+  {
+    title: "Free Estimates",
+    description:
+      "We provide clear, upfront pricing with no hidden fees. Get a detailed quote for your HVAC or electrical project before we start.",
+    icon: "calculator",
+  },
+  {
+    title: "Trusted Professionals",
+    description:
+      "Our team consists of fully licensed and insured technicians committed to safety, quality, and respecting your property.",
+    icon: "shield",
+  },
+  {
+    title: "Satisfaction Guaranteed",
+    description:
+      "We stand behind our work. If you're not completely satisfied with our service, we'll work with you to make it right.",
+    icon: "badge",
+  },
+];
+---
+
+<section class="py-24 bg-gray-50">
+  <Container>
+    <div class="text-center max-w-3xl mx-auto mb-16" data-animate="fade-up">
+      <h2>
+        Why Choose <span class="text-primary">CM'S</span>?
+      </h2>
+      <p>
+        We combine technical expertise with customer-first service. Experience
+        the difference of working with a team that values honesty, reliability,
+        and excellence.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        features.map((feature) => (
+          <div
+            class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 flex flex-col items-center text-center group"
+            data-animate="fade-up"
+          >
+            <div class="w-20 h-20 rounded-full bg-blue-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              {feature.icon === "calculator" && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-primary"
+                >
+                  <rect width="16" height="20" x="4" y="2" rx="2" />
+                  <line x1="8" x2="16" y1="6" y2="6" />
+                  <line x1="16" x2="16" y1="14" y2="18" />
+                  <path d="M16 10h.01" />
+                  <path d="M12 10h.01" />
+                  <path d="M8 10h.01" />
+                  <path d="M12 14h.01" />
+                  <path d="M8 14h.01" />
+                  <path d="M12 18h.01" />
+                  <path d="M8 18h.01" />
+                </svg>
+              )}
+              {feature.icon === "shield" && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-primary"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              )}
+              {feature.icon === "badge" && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-primary"
+                >
+                  <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.78 4.78 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.77 2 2 0 0 1 0-2.83 2 2 0 0 1 0-2.83Z" />
+                  <path d="m9 15 2 2 4-4" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-xl font-oswald text-slate-dark mb-4">
+              {feature.title}
+            </h3>
+            <p class="text-gray-500 leading-relaxed text-sm">
+              {feature.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

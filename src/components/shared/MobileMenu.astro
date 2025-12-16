@@ -5,96 +5,94 @@ import { SITE_DATA, NAV_LINKS } from "@data/site";
 ---
 
 <div
-    id="mobile-menu"
-    class="fixed inset-0 z-[60] bg-white translate-x-full transition-transform duration-300 flex flex-col pointer-events-none data-[open=true]:translate-x-0 data-[open=true]:pointer-events-auto"
+  id="mobile-menu"
+  class="fixed inset-0 z-[60] bg-white translate-x-full transition-transform duration-300 flex flex-col pointer-events-none data-[open=true]:translate-x-0 data-[open=true]:pointer-events-auto"
 >
-    <!-- Content -->
-    <div class="flex-1 flex flex-col p-6 pt-24 overflow-y-auto">
-        <!-- Navigation Links -->
-        <nav class="flex flex-col gap-6 mb-8">
-            {
-                NAV_LINKS.map((link) => (
-                    <a
-                        href={link.href}
-                        class="text-2xl font-medium text-gray-900 hover:text-blue-600 transition-colors"
-                    >
-                        {link.label}
-                    </a>
-                ))
-            }
-        </nav>
+  <!-- Content -->
+  <div class="flex-1 flex flex-col p-6 pt-24 overflow-y-auto">
+    <!-- Navigation Links -->
+    <nav class="flex flex-col gap-6 mb-8">
+      {
+        NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            class="text-4xl font-medium font-oswald text-gray-900 hover:text-blue-600 transition-colors menu-animate-item"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
 
-        <!-- Contact Info Section -->
-        <div class="mt-auto space-y-6">
-            <div class="h-px w-full bg-gray-100"></div>
+    <!-- Contact Info Section -->
+    <div class="mt-auto space-y-6 menu-animate-item">
+      <div class="h-px w-full bg-gray-100"></div>
 
-            <div class="flex flex-col gap-4">
-                <h3
-                    class="text-sm uppercase tracking-wider text-gray-500 font-semibold"
-                >
-                    Get in Touch
-                </h3>
+      <div class="flex flex-col gap-4">
+        <h3
+          class="text-sm uppercase tracking-wider text-gray-500 font-semibold"
+        >
+          Get in Touch
+        </h3>
 
-                <a
-                    href={`tel:${SITE_DATA.tel}`}
-                    class="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition-colors"
-                >
-                    <div
-                        class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center"
-                    >
-                        <Icon name="phone-call" class="size-5" />
-                    </div>
-                    <span class="font-medium">{SITE_DATA.phone}</span>
-                </a>
+        <a
+          href={`tel:${SITE_DATA.tel}`}
+          class="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition-colors"
+        >
+          <div
+            class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center"
+          >
+            <Icon name="phone-call" class="size-5" />
+          </div>
+          <span class="font-medium">{SITE_DATA.phone}</span>
+        </a>
 
-                <a
-                    href={`mailto:${SITE_DATA.email}`}
-                    class="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition-colors"
-                >
-                    <div
-                        class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center"
-                    >
-                        <Icon name="mail" class="size-5" />
-                    </div>
-                    <span class="font-medium">{SITE_DATA.email}</span>
-                </a>
-            </div>
+        <a
+          href={`mailto:${SITE_DATA.email}`}
+          class="flex items-center gap-3 text-gray-800 hover:text-blue-600 transition-colors"
+        >
+          <div
+            class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center"
+          >
+            <Icon name="mail" class="size-5" />
+          </div>
+          <span class="font-medium">{SITE_DATA.email}</span>
+        </a>
+      </div>
 
-            <Button
-                href="/contact"
-                variant="primary"
-                class="w-full justify-center py-6 text-lg"
-            >
-                Contact Us
-            </Button>
-        </div>
+      <Button
+        href="/contact"
+        variant="primary"
+        class="w-full justify-center py-6 text-lg"
+      >
+        Contact Us
+      </Button>
     </div>
+  </div>
 </div>
 
 <script>
-    // Script to handle menu toggle logic will be driven by the Header's button,
-    // but we can add self-closing logic here for links if needed.
-    const mobileMenu = document.getElementById("mobile-menu");
-    const closeBtn = document.getElementById("close-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const closeBtn = document.getElementById("close-menu-btn");
 
-    const closeMenu = () => {
-        document.dispatchEvent(new CustomEvent("close-menu"));
-    };
+  const closeMenu = () => {
+    document.dispatchEvent(new CustomEvent("close-menu"));
+  };
 
-    closeBtn?.addEventListener("click", closeMenu);
+  closeBtn?.addEventListener("click", closeMenu);
 
-    // Close when clicking a link
-    const links = mobileMenu?.querySelectorAll("a");
-    links?.forEach((link) => {
-        link.addEventListener("click", closeMenu);
-    });
+  // Close when clicking a link
+  const links = mobileMenu?.querySelectorAll("a");
+  links?.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
 
-    // Close on resize/orientation change
-    let lastWidth = window.innerWidth;
-    window.addEventListener("resize", () => {
-        if (window.innerWidth !== lastWidth) {
-            lastWidth = window.innerWidth;
-            closeMenu();
-        }
-    });
+  // Close on resize/orientation change
+  let lastWidth = window.innerWidth;
+  window.addEventListener("resize", () => {
+    if (window.innerWidth !== lastWidth) {
+      lastWidth = window.innerWidth;
+      closeMenu();
+    }
+  });
 </script>
