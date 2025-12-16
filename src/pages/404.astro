@@ -1,10 +1,39 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import fixingHvac from "../assets/videos/fixing-hvac.mp4";
 ---
 
-<Layout
-  title="404 - Page Not Found"
-  description="The page you are looking for does not exist."
->
-  404 error - Page Not Found
+<Layout title="Coming Soon" description="We are working on something amazing.">
+  <main class="relative h-screen w-full overflow-hidden">
+    <video
+      class="absolute top-0 left-0 w-full h-full object-cover"
+      autoplay
+      loop
+      muted
+      playsinline
+    >
+      <source src={fixingHvac} type="video/mp4" />
+    </video>
+
+    {/* Overlay */}
+    <div class="absolute inset-0 bg-black/60 z-10"></div>
+
+    <div
+      class="relative z-20 flex flex-col items-center justify-center h-full text-white text-center p-4"
+    >
+      <h1 class="text-6xl md:text-9xl font-bold mb-6 tracking-tighter">
+        Very Soon
+      </h1>
+      <p class="text-xl text-white md:text-2xl opacity-90 max-w-2xl font-light">
+        We are crafting an experience that will redefine your expectations. Stay
+        tuned.
+      </p>
+      <a
+        href="/"
+        class="mt-12 px-8 py-3 bg-white text-black hover:bg-gray-200 transition-colors rounded-full font-medium"
+      >
+        Return Home
+      </a>
+    </div>
+  </main>
 </Layout>
