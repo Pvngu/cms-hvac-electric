@@ -1,0 +1,191 @@
+---
+import Container from "@components/ui/Container.astro";
+---
+
+<section class="py-12 md:py-16 bg-slate-dark border-b border-white/10">
+    <Container>
+        <div class="flex flex-col items-center space-y-8 md:space-y-12">
+            <h2
+                class="text-sm md:text-base font-medium text-gray-400 uppercase tracking-widest text-center"
+                data-animate="fade-up"
+            >
+                Trusted by
+            </h2>
+
+            <div
+                class="w-full grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 items-center justify-items-center opacity-80"
+                data-animate="fade-up"
+                style="transition-delay: 0.1s;"
+            >
+                <!-- NTT DATA -->
+                <div
+                    class="w-32 md:w-40 grayscale hover:grayscale-0 transition-all duration-300"
+                >
+                    <svg
+                        viewBox="0 0 200 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-full h-auto text-white"
+                    >
+                        <!-- Icon -->
+                        <circle
+                            cx="20"
+                            cy="20"
+                            r="12"
+                            stroke="currentColor"
+                            stroke-width="4"></circle>
+                        <circle cx="20" cy="20" r="6" fill="currentColor"
+                        ></circle>
+                        <!-- Text -->
+                        <path
+                            d="M45 10H50V30H45V14L45 14L45 30H45V10Z"
+                            fill="currentColor"
+                            stroke="currentColor"
+                            stroke-width="0.5"></path>
+                        <text
+                            x="45"
+                            y="28"
+                            font-family="sans-serif"
+                            font-weight="bold"
+                            font-size="20"
+                            fill="currentColor">NTT Data</text
+                        >
+                    </svg>
+                </div>
+
+                <!-- FLUIDRA -->
+                <div
+                    class="w-32 md:w-40 grayscale hover:grayscale-0 transition-all duration-300"
+                >
+                    <svg
+                        viewBox="0 0 200 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-full h-auto text-white"
+                    >
+                        <text
+                            x="10"
+                            y="28"
+                            font-family="sans-serif"
+                            font-weight="900"
+                            font-size="24"
+                            letter-spacing="2"
+                            fill="currentColor">FLUIDRA</text
+                        >
+                    </svg>
+                </div>
+
+                <!-- OpenWeb -->
+                <div
+                    class="w-32 md:w-40 grayscale hover:grayscale-0 transition-all duration-300"
+                >
+                    <svg
+                        viewBox="0 0 200 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-full h-auto text-white"
+                    >
+                        <!-- Sunburst Icon -->
+                        <g transform="translate(15, 20)">
+                            <circle
+                                r="8"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"></circle>
+                            <line
+                                x1="0"
+                                y1="-12"
+                                x2="0"
+                                y2="-8"
+                                stroke="currentColor"
+                                stroke-width="2"></line>
+                            <line
+                                x1="0"
+                                y1="8"
+                                x2="0"
+                                y2="12"
+                                stroke="currentColor"
+                                stroke-width="2"></line>
+                            <line
+                                x1="-12"
+                                y1="0"
+                                x2="-8"
+                                y2="0"
+                                stroke="currentColor"
+                                stroke-width="2"></line>
+                            <line
+                                x1="8"
+                                y1="0"
+                                x2="12"
+                                y2="0"
+                                stroke="currentColor"
+                                stroke-width="2"></line>
+                            <line
+                                x1="-8.5"
+                                y1="-8.5"
+                                x2="-5.6"
+                                y2="-5.6"
+                                stroke="currentColor"
+                                stroke-width="2"></line>
+                            <line
+                                x1="5.6"
+                                y1="5.6"
+                                x2="8.5"
+                                y2="8.5"
+                                stroke="currentColor"
+                                stroke-width="2"></line>
+                            <line
+                                x1="8.5"
+                                y1="-8.5"
+                                x2="5.6"
+                                y2="-5.6"
+                                stroke="currentColor"
+                                stroke-width="2"></line>
+                            <line
+                                x1="-5.6"
+                                y1="5.6"
+                                x2="-8.5"
+                                y2="8.5"
+                                stroke="currentColor"
+                                stroke-width="2"></line>
+                        </g>
+                        <text
+                            x="45"
+                            y="28"
+                            font-family="serif"
+                            font-weight="bold"
+                            font-size="22"
+                            fill="currentColor">OpenWeb</text
+                        >
+                    </svg>
+                </div>
+
+                <!-- Cedar -->
+                <div
+                    class="w-32 md:w-40 grayscale hover:grayscale-0 transition-all duration-300"
+                >
+                    <svg
+                        viewBox="0 0 200 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-full h-auto text-white"
+                    >
+                        <!-- Cedar Icon -->
+                        <path
+                            d="M20 5L10 15H15L10 25H15L10 35H30L25 25H30L25 15H30L20 5Z"
+                            fill="currentColor"></path>
+                        <text
+                            x="45"
+                            y="28"
+                            font-family="sans-serif"
+                            font-weight="300"
+                            font-size="24"
+                            fill="currentColor"
+                            letter-spacing="-1">cedar</text
+                        >
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </Container>
+</section>

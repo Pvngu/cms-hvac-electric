@@ -6,6 +6,7 @@ import Image from "astro/components/Image.astro";
 import logo from "@assets/logo.svg";
 import MobileMenu from "@components/shared/MobileMenu.astro";
 import { NAV_LINKS, SITE_DATA } from "@data/site";
+import Topbar from "./Topbar.astro";
 ---
 
 <header
@@ -13,6 +14,12 @@ import { NAV_LINKS, SITE_DATA } from "@data/site";
   class="fixed top-0 w-full z-[70] transition-all duration-300 border-b border-transparent data-[menu-open=true]:border-transparent"
   data-menu-open="false"
 >
+  <div
+    id="topbar-wrapper"
+    class="hidden lg:block transition-transform duration-300 origin-top"
+  >
+    <Topbar />
+  </div>
   <Container class="flex items-center h-20">
     <!-- Logo -->
     <div class="flex-1 flex justify-start">

@@ -4,6 +4,7 @@ export const SITE_DATA = {
     phone: "+99 (874) 234 -654",
     tel: "+99874234654",
     email: "contact@example.com",
+    address: "San diego, CA",
 };
 
 export const NAV_LINKS = [

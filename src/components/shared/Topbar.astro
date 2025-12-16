@@ -1,0 +1,37 @@
+---
+import { Icon } from "astro-icon/components";
+import Container from "@components/ui/Container.astro";
+import { SITE_DATA } from "@data/site";
+---
+
+<div
+    class="bg-slate-dark text-white py-2 text-sm border-b border-gray-dim/20 relative z-[71]"
+>
+    <Container
+        class="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4"
+    >
+        <!-- Address -->
+        <div class="flex items-center gap-2">
+            <Icon name="map-pin" class="size-4 text-primary" />
+            <span class="opacity-90">{SITE_DATA.address}</span>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="flex items-center gap-4 sm:gap-6">
+            <a
+                href={`mailto:${SITE_DATA.email}`}
+                class="flex items-center gap-2 hover:text-primary transition-colors"
+            >
+                <Icon name="mail" class="size-4 text-primary" />
+                <span class="opacity-90">{SITE_DATA.email}</span>
+            </a>
+            <a
+                href={`tel:${SITE_DATA.tel}`}
+                class="flex items-center gap-2 hover:text-primary transition-colors"
+            >
+                <Icon name="phone-call" class="size-4 text-primary" />
+                <span class="opacity-90">{SITE_DATA.phone}</span>
+            </a>
+        </div>
+    </Container>
+</div>
