@@ -1,6 +1,7 @@
 ---
 import Container from "@components/ui/Container.astro";
 import Button from "@components/ui/Button.astro";
+import Badge from "@components/ui/Badge.astro";
 import Image from "astro/components/Image.astro";
 import { PROJECTS } from "@data/projects";
 ---
@@ -12,9 +13,12 @@ import { PROJECTS } from "@data/projects";
       class="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-12"
       data-animate="fade-up"
     >
-      <h2>
-        Recent Projects
-      </h2>
+      <div class="flex flex-col items-start gap-4">
+        <Badge icon="project">Our Projects</Badge>
+        <h2>
+          Recent Projects
+        </h2>
+      </div>
       
       <Button
         href="/projects"

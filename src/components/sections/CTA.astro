@@ -2,6 +2,7 @@
 import Container from "@components/ui/Container.astro";
 import Image from "astro/components/Image.astro";
 import Button from "@components/ui/Button.astro";
+import Badge from "@components/ui/Badge.astro";
 import { Icon } from "astro-icon/components";
 import { SITE_DATA } from "@data/site";
 
@@ -32,6 +33,7 @@ const SERVICES = [
       <!-- Left Column: Content -->
       <div class="text-white space-y-8" data-animate="fade-up">
         <div>
+          <Badge icon="mail" class="mb-6">Get in Touch</Badge>
           <h2 class="text-white">
             Let's Find Your <br /> Perfect Climate Solution
           </h2>
