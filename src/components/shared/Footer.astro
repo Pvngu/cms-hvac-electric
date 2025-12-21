@@ -56,14 +56,40 @@ const LEGAL_LINKS = [
         </p>
 
         <!-- Social Icons -->
-        <div class="flex gap-4">
-          <!-- <a
-            href="#"
-            class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-navy-deep hover:border-white transition-all duration-300 group"
-            aria-label="LinkedIn"
+        <!-- Contact Info -->
+        <div class="flex flex-col gap-4 mb-4">
+          <a
+            href={`tel:${SITE_DATA.tel}`}
+            class="flex items-center gap-3 text-gray-400 hover:text-blue-sky transition-colors group"
           >
-            <Icon name="linkedin" class="w-5 h-5" />
-          </a> -->
+            <div
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-sky/10 transition-colors"
+            >
+              <Icon name="phone-call" class="w-4 h-4" />
+            </div>
+            <span class="text-sm tracking-wide">{SITE_DATA.phone}</span>
+          </a>
+
+          <a
+            href={`mailto:${SITE_DATA.email}`}
+            class="flex items-center gap-3 text-gray-400 hover:text-blue-sky transition-colors group"
+          >
+            <div
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-sky/10 transition-colors"
+            >
+              <Icon name="mail" class="w-4 h-4" />
+            </div>
+            <span class="text-sm tracking-wide">{SITE_DATA.email}</span>
+          </a>
+
+          <div class="flex items-center gap-3 text-gray-400 group">
+            <div
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-sky/10 transition-colors"
+            >
+              <Icon name="map-pin" class="w-4 h-4" />
+            </div>
+            <span class="text-sm tracking-wide">{SITE_DATA.address}</span>
+          </div>
         </div>
       </div>
 
